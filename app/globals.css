@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+      "Liberation Mono", monospace;
+
+    --background: 40 33% 97%;
+    --foreground: 226 32% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 226 32% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 32% 12%;
+    --primary: 259 82% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 16% 93%;
+    --secondary-foreground: 226 32% 18%;
+    --muted: 220 16% 94%;
+    --muted-foreground: 222 10% 38%;
+    --accent: 190 92% 36%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 14% 87%;
+    --input: 222 14% 87%;
+    --ring: 259 82% 56%;
+    --radius: 0.8rem;
+
+    --brand: 259 82% 56%;
+    --brand-soft: 259 82% 96%;
+    --signal: 24 94% 50%;
+    --ok: 158 74% 32%;
+    --warn: 32 92% 42%;
+    --bad: 0 72% 51%;
+  }
+
+  .dark {
+    --background: 231 26% 7%;
+    --foreground: 220 24% 95%;
+    --card: 230 22% 10%;
+    --card-foreground: 220 24% 95%;
+    --popover: 230 24% 9%;
+    --popover-foreground: 220 24% 95%;
+    --primary: 259 90% 68%;
+    --primary-foreground: 231 30% 8%;
+    --secondary: 230 16% 16%;
+    --secondary-foreground: 220 24% 95%;
+    --muted: 230 16% 15%;
+    --muted-foreground: 222 12% 62%;
+    --accent: 187 92% 55%;
+    --accent-foreground: 231 30% 8%;
+    --destructive: 0 70% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 14% 19%;
+    --input: 230 14% 22%;
+    --ring: 259 90% 68%;
+    --radius: 0.8rem;
+
+    --brand: 259 90% 68%;
+    --brand-soft: 259 40% 18%;
+    --signal: 28 96% 60%;
+    --ok: 158 62% 48%;
+    --warn: 38 94% 58%;
+    --bad: 0 78% 64%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+  }
+
+  ::selection {
+    background: hsl(var(--brand) / 0.22);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring/60 ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* faint engineering grid used behind hero + diagram cards */
+  .grid-surface {
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--border) / 0.55) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, hsl(var(--border) / 0.55) 1px, transparent 1px);
+    background-size: 44px 44px;
+    background-position: center center;
+  }
+
+  .card-surface {
+    @apply rounded-lg border border-border/70 bg-card/80 backdrop-blur-sm;
+  }
+
+  .hairline {
+    @apply border-border/60;
+  }
+
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground;
+  }
+
+  .lesson-prose p {
+    @apply text-[15px] leading-7 text-foreground/85;
+  }
+
+  .lesson-prose strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .lesson-prose code {
+    @apply rounded border border-border/70 bg-muted/70 px-1.5 py-0.5 text-[0.85em];
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 999px;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
