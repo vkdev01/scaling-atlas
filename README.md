@@ -1,5 +1,7 @@
 # Scaling Atlas
 
+**Live: [vkdev01.github.io/scaling-atlas](https://vkdev01.github.io/scaling-atlas/)**
+
 An interactive system design course: twelve animated lessons that show how a
 request travels, where the time goes, and how to scale a system without
 breaking it.
